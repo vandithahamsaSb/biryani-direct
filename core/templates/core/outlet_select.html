@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% block title %}Choose Outlet{% endblock %}
+{% block content %}
+<h2 class="fw-bold mb-1">Select your nearest outlet</h2>
+<p class="text-muted mb-4">Choose a location to view its specific menu and prep times.</p>
+{% if outlets %}
+<div class="row g-4">
+    {% for outlet in outlets %}
+    <div class="col-md-4">
+        <a href="{% url 'menu' outlet.id %}" class="text-decoration-none">
+            <div class="card card-menu p-4 text-center h-100">
+                <h5 class="fw-bold text-dark mb-1">{{ outlet.name }}</h5>
+                <p class="text-muted mb-2"><i class="bi bi-geo-alt"></i> {{ outlet.city }}</p>
+                <p class="text-secondary small mb-3">{{ outlet.address }}</p>
+                <div class="fssai-note border-top pt-2">FSSAI: {{ outlet.fssai_number }}</div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

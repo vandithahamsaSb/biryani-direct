@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<!-- Outlet Banner -->
+<div class="p-4 bg-white rounded-4 shadow-sm border border-warning-subtle mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <div>
+        <span class="badge bg-warning text-dark rounded-pill px-3 py-1 mb-2">📍 {{ outlet.outlet_type|default:"Active Outlet" }}</span>
+        <h2 class="fw-bold mb-1" style="color: #E65100;">{{ outlet.name }} Menu</h2>
+        <p class="text-muted small mb-0"><i class="bi bi-geo-alt"></i> {{ outlet.address|default:"Hyderabad, Telangana" }} • <span class="text-success fw-semibold">Prices inclusive of 5% GST</span></p>
+    </div>
+    <a href="{% url 'cart_view' %}" class="btn btn-warning rounded-pill px-4 py-2 fw-bold shadow-sm">
+        🛒 View Cart
+    </a>
+</div>
+
+<!-- Menu Items Grid -->
+<div class="row g-4">
+    {% for item in menu_items %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 p-3 d-flex flex-column justify-content-between shadow-sm border-0 rounded-4">
+            <div>
+                <!-- Badges -->
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    {% if item.is_veg %}
+                        <span class="badge bg-success rounded-pill px-2 py-1">🌿 Veg</span>
+                    {% else %}
+                        <span class="badge bg-danger rounded-pill px-2 py-1">🍗 Non-Veg</span>
+                    {% endif %}
+                    {% if item.spice_level %}
+                        <small class="text-warning fw-bold">🌶️ {{ item.spice_level }}</small>
+                    {% endif %}
+                </div>
+
+                <h5 class="fw-bold mb-1">{{ item.name }}</h5>
+                <p class="text-muted small mb-3">{{ item.description }}</p>
+            </div>
+
+            <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="fs-4 fw-bold" style="color: #E65100;">₹{{ item.price }}</span>
+                    <small class="text-muted fs-7">(Inc. 5% GST)</small>
+                </div>
+
+                <form method="post" action="{% url 'add_to_cart' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <input type="hidden" name="menu_item_id" value="{{ item.id }}">
+                    <button type="submit" class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm">
+                        ➕ Add to Order
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <div class="card p-5 border-0 shadow-sm rounded-4">
+            <h4 class="fw-bold text-dark mb-2">No specific items filtered for this outlet yet.</h4>
+            <p class="text-muted mb-4">Click below to view our full Hyderabadi Biryani menu!</p>
+            <a href="/" class="btn btn-primary rounded-pill px-4 py-2 fw-bold mx-auto w-auto">
+                📍 Choose Another Location
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
