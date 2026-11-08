@@ -20,8 +20,20 @@
 ---
 
 ## 📸 System Screenshots
+<img width="1350" height="633" alt="image" src="https://github.com/user-attachments/assets/eef040b1-575a-4f34-b7aa-9810f1219d0b" />
+<img width="1338" height="555" alt="image" src="https://github.com/user-attachments/assets/2b6eaac3-9d1d-4e77-b9c7-3b21a6830b2e" />
+<img width="1291" height="605" alt="image" src="https://github.com/user-attachments/assets/dab9df5f-e74c-42c1-8c2b-b45a20701b44" />
+<img width="1360" height="635" alt="image" src="https://github.com/user-attachments/assets/c46d977f-7149-4aec-aa62-046d3391f7ee" />
+<img width="1187" height="633" alt="image" src="https://github.com/user-attachments/assets/c53c383c-bea7-4039-90f4-99920b7a892e" />
+<img width="1237" height="618" alt="image" src="https://github.com/user-attachments/assets/08aa593e-cfa8-461f-a780-219ee148c722" />
+<img width="698" height="262" alt="image" src="https://github.com/user-attachments/assets/b1ac1afd-ed76-4485-afc2-63d2f121d8c8" />
 
-*(Tip: Drag & drop your project screenshots directly into this section when editing on GitHub)*
+
+
+
+
+
+
 
 ---
 
